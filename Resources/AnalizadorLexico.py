@@ -5,69 +5,87 @@ from Util.BodyParser import BodyParser
 # resultado del analisis
 resultado_lexema = []
 
-reservada = (
-    # Palabras Reservadas
-    'INCLUDE',
-    'USING',
-    'NAMESPACE',
-    'STD',
-    'COUT',
-    'CIN',
-    'GET',
-    'CADENA',
-    'RETURN',
-    'VOID',
-    'INT',
-    'ENDL',
-)
-tokens = reservada + (
-    'IDENTIFICADOR',
-    'ENTERO',
-    'ASIGNAR',
+with open('./assets/palabrasReservadas.txt') as f:
+    reservadas = f.readlines()
+reservadas = [x.strip() for x in reservadas] 
+reservada = ()
 
-    'SUMA',
-    'RESTA',
-    'MULT',
-    'DIV',
-    'POTENCIA',
-    'MODULO',
+for reserv in reservadas:
+    reservada = reservada + (reserv,)
+# reservada = (
+#     # Palabras Reservadas
+#     'INCLUDE',
+#     'USING',
+#     'NAMESPACE',
+#     'STD',
+#     'COUT',
+#     'CIN',
+#     'GET',
+#     'CADENA',
+#     'RETURN',
+#     'VOID',
+#     'INT',
+#     'ENDL',
+# )
 
-   'MINUSMINUS',
-   'PLUSPLUS',
+with open('./assets/tokens.txt') as t:
+    tkns = t.readlines()
+tkns = [x.strip() for x in tkns] 
 
-    #Condiones
-   'SI',
-    'SINO',
-    #Ciclos
-   'MIENTRAS',
-   'PARA',
-    #logica
-    'AND',
-    'OR',
-    'NOT',
-    'MENORQUE',
-    'MENORIGUAL',
-    'MAYORQUE',
-    'MAYORIGUAL',
-    'IGUAL',
-    'DISTINTO',
-    # Symbolos
-    'NUMERAL',
+auxTokens = ()
+for atk in tkns:
+    auxTokens = auxTokens + (atk,)
 
-    'PARIZQ',
-    'PARDER',
-    'CORIZQ',
-    'CORDER',
-    'LLAIZQ',
-    'LLADER',
+tokens = reservada + auxTokens
+
+# tokens = reservada + (
+#     'IDENTIFICADOR',
+#     'ENTERO',
+#     'ASIGNAR',
+
+#     'SUMA',
+#     'RESTA',
+#     'MULT',
+#     'DIV',
+#     'POTENCIA',
+#     'MODULO',
+
+#    'MINUSMINUS',
+#    'PLUSPLUS',
+
+#     #Condiones
+#    'SI',
+#     'SINO',
+#     #Ciclos
+#    'MIENTRAS',
+#    'PARA',
+#     #logica
+#     'AND',
+#     'OR',
+#     'NOT',
+#     'MENORQUE',
+#     'MENORIGUAL',
+#     'MAYORQUE',
+#     'MAYORIGUAL',
+#     'IGUAL',
+#     'DISTINTO',
+#     # Symbolos
+#     'NUMERAL',
+
+#     'PARIZQ',
+#     'PARDER',
+#     'CORIZQ',
+#     'CORDER',
+#     'LLAIZQ',
+#     'LLADER',
     
-    # Otros
-    'PUNTOCOMA',
-    'COMA',
-    'COMDOB',
-    'MAYORDER', #>>
-    'MAYORIZQ', #<<
-)
+#     # Otros
+#     'PUNTOCOMA',
+#     'COMA',
+#     'COMDOB',
+#     'MAYORDER', #>>
+#     'MAYORIZQ', #<<
+# )
 
 # Reglas de Expresiones Regualres para token de Contexto simple
 
