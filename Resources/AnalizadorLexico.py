@@ -288,5 +288,7 @@ class AnalizadorLexico(Resource):
                 '_help': 'This field cannot be blank!'
             }
         ])
+        with open('./assets/textoAanalizar.txt', "w") as text_file:
+            text_file.write(data['data'])
         prueba(data['data'])
         return {'data': resultado_lexema}
