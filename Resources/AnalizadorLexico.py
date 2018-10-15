@@ -231,7 +231,7 @@ def t_comments_ONELine(t):
      r'\/\/(.)*\n'
      t.lexer.lineno += 1
      print("Comentario de una linea")
-t_ignore =' \t'
+t_ignore =' . \t'
 
 def t_error( t):
     global resultado_lexema
